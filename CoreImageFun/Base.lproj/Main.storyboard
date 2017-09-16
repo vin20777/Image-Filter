@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,13 +23,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flower" translatesAutoresizingMaskIntoConstraints="NO" id="4OO-wy-z5d">
-                                <rect key="frame" x="0.0" y="216.5" width="375" height="234"/>
+                                <rect key="frame" x="0.0" y="290" width="375" height="234"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4OO-wy-z5d" secondAttribute="height" multiplier="8:5" id="s7P-dq-8ov"/>
                                 </constraints>
                             </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nzq-IE-Spv">
-                                <rect key="frame" x="14" y="537" width="347" height="31"/>
+                                <rect key="frame" x="14" y="544" width="347" height="31"/>
                                 <connections>
                                     <action selector="amountSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jwb-s8-MFD"/>
                                 </connections>
@@ -54,25 +54,46 @@
                                     <action selector="savePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3OY-Ss-H7A"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X6m-GV-ubF">
+                                <rect key="frame" x="112.5" y="50" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="hTq-OK-RxV"/>
+                                    <constraint firstAttribute="height" constant="150" id="paA-ol-oCh"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="djz-NC-7Hd">
+                                <rect key="frame" x="8" y="220" width="359" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JSs-td-KSo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nzq-IE-Spv" secondAttribute="bottom" constant="100" id="02v-9T-jVH"/>
                             <constraint firstItem="nzq-IE-Spv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="1gg-7H-XMq"/>
                             <constraint firstAttribute="trailing" secondItem="zM5-ps-1cd" secondAttribute="trailing" constant="16" id="4dK-hC-LIt"/>
-                            <constraint firstItem="4OO-wy-z5d" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Azs-y9-1r4"/>
                             <constraint firstItem="zM5-ps-1cd" firstAttribute="width" secondItem="HSH-r3-xX4" secondAttribute="width" id="Ca8-rI-JrW"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HSH-r3-xX4" secondAttribute="bottom" constant="20" id="HcI-ZW-BTc"/>
+                            <constraint firstItem="X6m-GV-ubF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KgP-CK-yAQ"/>
                             <constraint firstItem="HSH-r3-xX4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="OvL-35-1nO"/>
+                            <constraint firstItem="4OO-wy-z5d" firstAttribute="top" secondItem="djz-NC-7Hd" secondAttribute="bottom" constant="20" id="PFg-Gm-TYE"/>
+                            <constraint firstItem="X6m-GV-ubF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="cOM-0Q-l7Z"/>
                             <constraint firstItem="zM5-ps-1cd" firstAttribute="leading" secondItem="HSH-r3-xX4" secondAttribute="trailing" constant="30" id="g1G-8B-tbs"/>
+                            <constraint firstItem="djz-NC-7Hd" firstAttribute="centerX" secondItem="X6m-GV-ubF" secondAttribute="centerX" id="k1D-sX-VCL"/>
                             <constraint firstItem="4OO-wy-z5d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lgk-rb-4cd"/>
                             <constraint firstItem="4OO-wy-z5d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nGa-8j-2Ml"/>
                             <constraint firstAttribute="trailing" secondItem="4OO-wy-z5d" secondAttribute="trailing" id="oF4-3e-390"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zM5-ps-1cd" secondAttribute="bottom" constant="20" id="s9a-QD-F9Q"/>
+                            <constraint firstItem="djz-NC-7Hd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="svY-P4-xzR"/>
+                            <constraint firstItem="djz-NC-7Hd" firstAttribute="top" secondItem="X6m-GV-ubF" secondAttribute="bottom" constant="20" id="tOF-q5-wKa"/>
+                            <constraint firstItem="nzq-IE-Spv" firstAttribute="top" secondItem="4OO-wy-z5d" secondAttribute="bottom" constant="20" id="yKd-Eu-raK"/>
                             <constraint firstAttribute="trailing" secondItem="nzq-IE-Spv" secondAttribute="trailing" constant="16" id="yON-o6-VvP"/>
+                            <constraint firstAttribute="trailing" secondItem="djz-NC-7Hd" secondAttribute="trailing" constant="8" id="yu7-g3-wL2"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="BarCode" destination="djz-NC-7Hd" id="HU5-Bk-oQQ"/>
+                        <outlet property="QRCode" destination="X6m-GV-ubF" id="2NV-qW-1Bb"/>
                         <outlet property="amountSlider" destination="nzq-IE-Spv" id="vXo-lq-gJu"/>
                         <outlet property="imageView" destination="4OO-wy-z5d" id="08T-A2-F52"/>
                     </connections>

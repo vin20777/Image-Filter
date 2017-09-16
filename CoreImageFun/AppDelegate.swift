@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  CoreImageFun
 //
-//  Created by VTStudio on 2017/9/14.
+//  Created by Vincent Vangoh on 2017/9/14.
 //  Copyright © 2017年 VTStudio. All rights reserved.
 //
 

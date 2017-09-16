@@ -12,6 +12,7 @@
 		B5359D591F6A71D100F9B74A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5359D571F6A71D100F9B74A /* Main.storyboard */; };
 		B5359D5B1F6A71D100F9B74A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5359D5A1F6A71D100F9B74A /* Assets.xcassets */; };
 		B5359D5E1F6A71D100F9B74A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5359D5C1F6A71D100F9B74A /* LaunchScreen.storyboard */; };
+		D90A830C1F6CCF38009D995A /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90A830B1F6CCF38009D995A /* ImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		B5359D5A1F6A71D100F9B74A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5359D5D1F6A71D100F9B74A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5359D5F1F6A71D100F9B74A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D90A830B1F6CCF38009D995A /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				B5359D531F6A71D100F9B74A /* AppDelegate.swift */,
 				B5359D551F6A71D100F9B74A /* ViewController.swift */,
+				D90A830B1F6CCF38009D995A /* ImageExtension.swift */,
 				B5359D571F6A71D100F9B74A /* Main.storyboard */,
 				B5359D5A1F6A71D100F9B74A /* Assets.xcassets */,
 				B5359D5C1F6A71D100F9B74A /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5359D561F6A71D100F9B74A /* ViewController.swift in Sources */,
+				D90A830C1F6CCF38009D995A /* ImageExtension.swift in Sources */,
 				B5359D541F6A71D100F9B74A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +303,7 @@
 				B5359D641F6A71D100F9B74A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

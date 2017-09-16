@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  CoreImageFun
 //
-//  Created by VTStudio on 2017/9/14.
+//  Created by Vincent Vangoh on 2017/9/14.
 //  Copyright © 2017年 VTStudio. All rights reserved.
 //
 
@@ -14,10 +14,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var amountSlider: UISlider!
+    @IBOutlet weak var QRCode: UIImageView!
+    @IBOutlet weak var BarCode: UIImageView!
     
     var context: CIContext!
     var filter: CIFilter!
     var beginImage: CIImage!
+    var currentImage: CIImage?
     
     var orientation: UIImageOrientation = .up
     
@@ -26,6 +29,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         // 1
         beginImage = CIImage(image: UIImage(named: "Flower")!)
+        currentImage = beginImage
         
         // 2
         filter = CIFilter(name: "CISepiaTone")!
@@ -36,11 +40,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         // 3
         context = CIContext(options:nil)
+        
         let cgimg = context.createCGImage(filter.outputImage!, from: filter.outputImage!.extent)
         let newImage = UIImage(cgImage: cgimg!)
         self.imageView.image = newImage
         
-        self.logAllFilters()
+//        //Uncomment to see Filter details
+//        self.logAllFilters()
+        
+        // Bonus: QRCode & BarCode
+        self.BarCode.image = UIImage.barCodeImageWithInfo(info: "Vincent van Gogh")
+        self.QRCode.image = UIImage.qrCodeImageWithInfo(info: "https://github.com/vin20777/Image-Filter", width: 300)
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,14 +70,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         let newImage = UIImage(cgImage: cgimg!, scale: 1.0, orientation: orientation)
         self.imageView.image = newImage
+        currentImage = outputImage
     }
     
     @IBAction func loadPhoto(_ sender: Any) {
         
+        //Apple Privacy Terms Since iOS 10, also set description in Info.plist
+        if PHPhotoLibrary.authorizationStatus() == .denied {
+            print("Allow access please!")
+            return
+        }
+        
         let pickerC = UIImagePickerController()
         pickerC.delegate = self
         self.present(pickerC, animated: true, completion: nil)
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -82,8 +98,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     @IBAction func savePhoto(_ sender: Any) {
+        
+        if PHPhotoLibrary.authorizationStatus() == .denied {
+            print("Allow access please!")
+            return
+        }
         // 1
-        let imageToSave = filter.outputImage
+//        let imageToSave = filter.outputImage
+        let imageToSave = currentImage
         
         // 2
         let softwareContext = CIContext(options:[kCIContextUseSoftwareRenderer: true])
