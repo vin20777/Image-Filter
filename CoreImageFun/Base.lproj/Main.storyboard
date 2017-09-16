@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CoreImageFun" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flower" translatesAutoresizingMaskIntoConstraints="NO" id="4OO-wy-z5d">
+                                <rect key="frame" x="0.0" y="216.5" width="375" height="234"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4OO-wy-z5d" secondAttribute="height" multiplier="8:5" id="s7P-dq-8ov"/>
+                                </constraints>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nzq-IE-Spv">
+                                <rect key="frame" x="14" y="537" width="347" height="31"/>
+                                <connections>
+                                    <action selector="amountSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jwb-s8-MFD"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zM5-ps-1cd">
+                                <rect key="frame" x="202.5" y="617" width="156.5" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.70196078429999997" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Photo Select">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bet-Lz-t6V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSH-r3-xX4">
+                                <rect key="frame" x="16" y="617" width="156.5" height="30"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="savePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3OY-Ss-H7A"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nzq-IE-Spv" secondAttribute="bottom" constant="100" id="02v-9T-jVH"/>
+                            <constraint firstItem="nzq-IE-Spv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="1gg-7H-XMq"/>
+                            <constraint firstAttribute="trailing" secondItem="zM5-ps-1cd" secondAttribute="trailing" constant="16" id="4dK-hC-LIt"/>
+                            <constraint firstItem="4OO-wy-z5d" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Azs-y9-1r4"/>
+                            <constraint firstItem="zM5-ps-1cd" firstAttribute="width" secondItem="HSH-r3-xX4" secondAttribute="width" id="Ca8-rI-JrW"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HSH-r3-xX4" secondAttribute="bottom" constant="20" id="HcI-ZW-BTc"/>
+                            <constraint firstItem="HSH-r3-xX4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="OvL-35-1nO"/>
+                            <constraint firstItem="zM5-ps-1cd" firstAttribute="leading" secondItem="HSH-r3-xX4" secondAttribute="trailing" constant="30" id="g1G-8B-tbs"/>
+                            <constraint firstItem="4OO-wy-z5d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lgk-rb-4cd"/>
+                            <constraint firstItem="4OO-wy-z5d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nGa-8j-2Ml"/>
+                            <constraint firstAttribute="trailing" secondItem="4OO-wy-z5d" secondAttribute="trailing" id="oF4-3e-390"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zM5-ps-1cd" secondAttribute="bottom" constant="20" id="s9a-QD-F9Q"/>
+                            <constraint firstAttribute="trailing" secondItem="nzq-IE-Spv" secondAttribute="trailing" constant="16" id="yON-o6-VvP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="amountSlider" destination="nzq-IE-Spv" id="vXo-lq-gJu"/>
+                        <outlet property="imageView" destination="4OO-wy-z5d" id="08T-A2-F52"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Flower" width="320" height="213"/>
+    </resources>
+</document>
