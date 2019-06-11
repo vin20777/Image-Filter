@@ -22,7 +22,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var beginImage: CIImage!
     var currentImage: CIImage?
     
-    var orientation: UIImageOrientation = .up
+    var orientation: UIImage.Orientation = .up
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,12 +45,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let newImage = UIImage(cgImage: cgimg!)
         self.imageView.image = newImage
         
-//        //Uncomment to see Filter details
-//        self.logAllFilters()
-        
         // Bonus: QRCode & BarCode
         self.BarCode.image = UIImage.barCodeImageWithInfo(info: "Vincent van Gogh")
-        self.QRCode.image = UIImage.qrCodeImageWithInfo(info: "https://github.com/vin20777/Image-Filter", width: 300)
+        self.QRCode.image = UIImage.qrCodeImage(info: "https://github.com/vin20777/Image-Filter", length: self.QRCode.frame.size.width, color1: CIColor.blue, color2: CIColor.white)
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,9 +57,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     @IBAction func amountSliderValueChanged(_ sender: UISlider) {
         let sliderValue = sender.value
-        
-//        filter.setValue(sliderValue, forKey: kCIInputIntensityKey)
-//        let outputImage = filter.outputImage
 
         let outputImage = self.oldPhoto(img: beginImage, withAmount: sliderValue)
         
@@ -86,10 +80,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.present(pickerC, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         self.dismiss(animated: true, completion: nil)
         
-        let gotImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let gotImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         orientation = gotImage.imageOrientation
         
         beginImage = CIImage(image:gotImage)
@@ -108,7 +105,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let imageToSave = currentImage
         
         // 2
-        let softwareContext = CIContext(options:[kCIContextUseSoftwareRenderer: true])
+        let softwareContext = CIContext(options:convertToOptionalCIContextOptionDictionary([convertFromCIContextOption(CIContextOption.useSoftwareRenderer): true]))
         
         // 3
         let cgimg = softwareContext.createCGImage(imageToSave!, from: (imageToSave?.extent)!)
@@ -161,7 +158,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         lighten.setValue(0, forKey:"inputSaturation")
         
         // 4
-        let croppedImage = lighten.outputImage?.cropping(to: beginImage.extent)
+        let croppedImage = lighten.outputImage?.cropped(to: beginImage.extent)
         
         // 5 composite
         let composite = CIFilter(name:"CIHardLightBlendMode")!
@@ -180,3 +177,24 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalCIContextOptionDictionary(_ input: [String: Any]?) -> [CIContextOption: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (CIContextOption(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCIContextOption(_ input: CIContextOption) -> String {
+	return input.rawValue
+}

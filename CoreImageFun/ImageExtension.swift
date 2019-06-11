@@ -22,23 +22,23 @@ extension UIImage {
         return UIImage(ciImage: outputImage!)
     }
     
-    class func qrCodeImageWithInfo(info: String!, width: CGFloat) -> UIImage? {
-    
+    class func qrCodeImage(info: String!, length: CGFloat, color1: CIColor, color2:CIColor) -> UIImage? {
+        
+        var qrImage: CIImage?
+        
         let strData = info.data(using: .utf8, allowLossyConversion: false)
         let qrFilter = CIFilter(name:"CIQRCodeGenerator")!
         qrFilter.setValue(strData, forKey: "inputMessage")
         qrFilter.setValue("H", forKey: "inputCorrectionLevel")
-        let qrImage = qrFilter.outputImage
+        qrImage = qrFilter.outputImage?.transformed(by: CGAffineTransform(scaleX: 10.0, y: 10.0))
         
         let colorFilter = CIFilter(name:"CIFalseColor")!
         colorFilter.setDefaults()
         colorFilter.setValue(qrImage, forKey: kCIInputImageKey)
-        colorFilter.setValue(CIColor.white(), forKey: "inputColor0")
-        colorFilter.setValue(CIColor.black(), forKey: "inputColor1")
-        let colorImage = colorFilter.outputImage
+        colorFilter.setValue(color1, forKey: "inputColor0")
+        colorFilter.setValue(color2, forKey: "inputColor1")
+        qrImage = colorFilter.outputImage
         
-        let scale = CGFloat(0.3)
-        let codeImage = UIImage(ciImage: colorImage!, scale: scale, orientation: .up)
-        return codeImage
+        return UIImage(ciImage: qrImage!)
     }
 }
